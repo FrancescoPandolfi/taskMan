@@ -1,0 +1,7 @@
+{
+  "tasks": [
+    { "id": 1, "title": "a title", "description": "Implement a feature", "status": "done" },
+    { "id": 2, "title": "another title", "description": "Fix a bug", "status": "todo" },
+    { "id": 3, "title": "yet another title", "description": "Refactor code", "status": "inProgress" }
+  ]
+}
