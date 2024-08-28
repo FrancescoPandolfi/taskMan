@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
 
   constructor() {
-    this.setTheme('dracula');
+    this.setTheme('business');
   }
 
   setTheme(theme: string) {

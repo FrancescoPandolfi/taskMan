@@ -1,9 +1,9 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { ApiService } from '../../core/services/api.service';
-import { ETaskStatus, StatusColumn, Task } from '../../shared/models';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
+import { TaskService } from './services/task.service';
 import { JsonPipe } from '@angular/common';
-import { TaskComponent } from '../../shared/UI-components/task/task.component';
-import { TaskColComponent } from '../../shared/UI-components/task-col/task-col.component';
+import { TaskComponent } from './components/task/task.component';
+import { TaskColComponent } from './components/task-col/task-col.component';
+import { CdkDropList } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,37 +11,15 @@ import { TaskColComponent } from '../../shared/UI-components/task-col/task-col.c
   imports: [
     JsonPipe,
     TaskComponent,
-    TaskColComponent
+    TaskColComponent,
+    CdkDropList
   ],
   templateUrl: './dashboard.component.html',
   styles: ``
 })
 export class DashboardComponent implements OnInit {
-
-  statusColumns: StatusColumn[] = [
-    { id: ETaskStatus.todo, title: 'To Do', tasks: signal([]) },
-    { id: ETaskStatus.inProgress, title: 'In Progress', tasks: signal([]) },
-    { id: ETaskStatus.done, title: 'Done', tasks: signal([]) }
-  ];
-  loading = signal(false);
-  private api = inject(ApiService);
-
+  taskService = inject(TaskService);
   ngOnInit(): void {
-    this.getTasks();
+    this.taskService.getTasks().subscribe();
   }
-
-  getTasks() {
-    this.loading.set(true);
-    this.api.getTasks().subscribe({
-      next: (tasks) => {
-        this.statusColumns.forEach((column) => {
-          column.tasks.set(tasks.filter((task) => task.status === column.id));
-        });
-        console.log(tasks);
-      },
-      complete: () => this.loading.set(false)
-    });
-  }
-
-
 }

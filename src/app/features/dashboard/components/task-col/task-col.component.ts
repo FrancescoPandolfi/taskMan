@@ -5,7 +5,6 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './task-col.component.html',
-  styles: ``
 })
 export class TaskColComponent {
 

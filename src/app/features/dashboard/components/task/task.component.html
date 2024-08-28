@@ -1,0 +1,21 @@
+@for (task of tasks(); track task.id) {
+  <div class="bg-base-300 mb-2 rounded p-4 px-5">
+    <div class="flex mb-4">
+      <div class="mr-auto">{{ task.title }}</div>
+      <button (click)="taskModalComponent()?.openModal(); selectedTask = task">
+        <fa-icon class="mr-3 text-xs hover:text-secondary transition" [icon]="faPen"></fa-icon>
+      </button>
+      <button (click)="confirmModalComponent()?.openModal(); selectedTask = task">
+        <fa-icon class="text-xs hover:text-secondary transition" [icon]="faTrash"></fa-icon>
+      </button>
+    </div>
+    <div class="text-xs text-neutral-400">{{ task.description }}</div>
+  </div>
+}
+
+<app-confirm-modal
+  [title]="'Delete task'"
+  [text]="'Are you sure you want to delete this task?'"
+  (confirm)="deleteTask()"
+></app-confirm-modal>
+<app-task-modal [task]="selectedTask"></app-task-modal>

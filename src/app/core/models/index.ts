@@ -13,11 +13,20 @@ export enum ETaskStatus {
   done = 'done'
 }
 
-export const TaskStatus = {
-  todo: 'To Do',
-  inProgress: 'In Progress',
-  done: 'Done'
-};
+export const TaskStatus = [
+  {
+    id: ETaskStatus.todo,
+    title: 'To Do'
+  },
+  {
+    id: ETaskStatus.inProgress,
+    title: 'In Progress'
+  },
+  {
+    id: ETaskStatus.done,
+    title: 'Done'
+  }
+];
 
 export interface StatusColumn {
   id: ETaskStatus;

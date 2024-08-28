@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Directive({
   selector: '[appIcons]',
@@ -15,4 +15,6 @@ export class IconsDirective {
 
   faPlus = faPlus;
   faBars = faBars;
+  faPen = faPen;
+  faTrash = faTrash;
 }

@@ -1,0 +1,47 @@
+<dialog class="modal" #createTaskModal id="createTaskModal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button (click)="resetForm()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="text-lg font-bold">Create new task</h3>
+    <form class="my-4" [formGroup]="form" method="dialog">
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Title</span>
+        </div>
+        <input
+          [formControlName]="'title'"
+          class="input input-bordered w-full"
+          [ngClass]="{ 'input-error': form.controls['title'].invalid && form.controls['title'].touched }"
+          type="text"/>
+      </label>
+
+      <label class="form-control">
+        <div class="label">
+          <span class="label-text">Description</span>
+        </div>
+        <textarea
+          [formControlName]="'description'"
+          [ngClass]="{ 'textarea-error': form.controls['description'].invalid && form.controls['description'].touched }"
+          class="textarea textarea-bordered h-24"
+        ></textarea>
+      </label>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Status</span>
+        </div>
+        <select [formControlName]="'status'" class="select select-bordered">
+          @for (status of TaskStatus; track status.id) {
+            <option>{{ status.id }}</option>
+          }
+        </select>
+      </label>
+      <div class="flex justify-between">
+        <button (click)="resetForm()" class="btn btn-neutral mt-4">Cancel</button>
+        <button [disabled]="form.invalid" class="btn btn-primary mt-4">Ok</button>
+      </div>
+    </form>
+
+  </div>
+</dialog>
