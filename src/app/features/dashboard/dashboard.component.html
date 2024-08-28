@@ -1,11 +1,14 @@
 <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-8 max-ng h-[calc(100vh-170px)]">
   @for (col of taskService.statusColumns; track col.title) {
-    <div>
+    <div class="mb-10">
       <app-task-col [title]="col.title" [totTasks]="col.tasks().length">
         @if (taskService.loading()) {
           <div class="flex w-full flex-col gap-4">
-            <div class="skeleton h-32 w-full"></div>
-            <div class="skeleton h-32 w-full"></div>
+            <div class="skeleton h-24 w-full"></div>
+            <div class="skeleton h-24 w-full"></div>
+            <div class="skeleton h-24 w-full"></div>
+            <div class="skeleton h-24 w-full"></div>
+            <div class="skeleton h-24 w-full"></div>
           </div>
         } @else {
           <app-task [tasks]="col.tasks()"></app-task>

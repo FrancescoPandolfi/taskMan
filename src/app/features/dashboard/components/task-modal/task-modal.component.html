@@ -1,9 +1,11 @@
 <dialog class="modal" #createTaskModal id="createTaskModal">
   <div class="modal-box">
     <form method="dialog">
-      <button (click)="resetForm()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-    <h3 class="text-lg font-bold">Create new task</h3>
+    <h3 class="text-lg font-bold">
+      {{ scope() === 'EDIT' ? 'Edit task' : 'Create new task' }}
+    </h3>
     <form class="my-4" [formGroup]="form" method="dialog">
       <label class="form-control w-full">
         <div class="label">
@@ -38,8 +40,8 @@
         </select>
       </label>
       <div class="flex justify-between">
-        <button (click)="resetForm()" class="btn btn-neutral mt-4">Cancel</button>
-        <button [disabled]="form.invalid" class="btn btn-primary mt-4">Ok</button>
+        <button class="btn btn-neutral mt-4">Cancel</button>
+        <button [disabled]="form.invalid" (click)="saveTask()" class="btn btn-primary mt-4">Ok</button>
       </div>
     </form>
 

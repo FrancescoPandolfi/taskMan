@@ -2,7 +2,7 @@ import { Component, inject, input, InputSignal, viewChild } from '@angular/core'
 import { Task } from '../../../../core/models';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { IconsDirective } from '../../../../shared/icons.directive';
-import { TaskModalComponent } from '../../../../shared/UI/task-modal/task-modal.component';
+import { TaskModalComponent } from '../task-modal/task-modal.component';
 import { ConfirmModalComponent } from '../../../../shared/UI/confirm-modal/confirm-modal.component';
 import { TaskService } from '../../services/task.service';
 import { NgClass } from '@angular/common';
@@ -25,10 +25,6 @@ export class TaskComponent extends IconsDirective {
   confirmModalComponent = viewChild(ConfirmModalComponent);
   taskService = inject(TaskService);
   selectedTask: Task | null = null;
-
-  editTask() {
-
-  }
 
   deleteTask() {
     if (this.selectedTask) {

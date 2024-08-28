@@ -8,8 +8,8 @@ import { faBars, faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icon
 export class IconsDirective {
 
   /***
-    - Extend the directive in the component class
-    - Use the FontAwesome icons in the template extending the directive
+    - To use icons in your component extend the directive in the component class
+    - Then you can use the icons in the template like this:
     - Example: <fa-icon [icon]="faBars"></fa-icon>
    ***/
 

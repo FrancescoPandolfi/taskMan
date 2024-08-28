@@ -33,3 +33,8 @@ export interface StatusColumn {
   title: string;
   tasks: WritableSignal<Task[]>
 }
+
+export enum Themes {
+  nord = 'nord',
+  dracula = 'dracula'
+}

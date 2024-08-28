@@ -1,16 +1,16 @@
-import { Component, inject, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { IconsDirective } from '../../../../shared/icons.directive';
-import { HeaderService } from './header.service';
-import { TaskStatus } from '../../../models';
-import { TaskModalComponent } from '../../../../shared/UI/task-modal/task-modal.component';
+import { TaskModalComponent } from '../../../../features/dashboard/components/task-modal/task-modal.component';
+import { SwapThemeComponent } from '../../../../shared/UI/swap-theme/swap-theme.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     FaIconComponent,
-    TaskModalComponent
+    TaskModalComponent,
+    SwapThemeComponent
   ],
   template: `
     <header class="text-neutral-content w-full flex items-center rounded-lg">
@@ -22,10 +22,14 @@ import { TaskModalComponent } from '../../../../shared/UI/task-modal/task-modal.
 
       <div class="text-neutral-500 text-lg mr-auto">Hi, {{ name }}</div>
 
-      <button class="btn btn-primary btn-sm mr-4" (click)="taskModalComponent()?.openModal()">
+      <button (click)="createTask()" class="btn btn-primary btn-sm mr-4">
         <fa-icon [icon]="faPlus"></fa-icon>
         Create
       </button>
+
+      <div class="mr-4">
+        <app-swap-theme></app-swap-theme>
+      </div>
 
       <div class="avatar">
         <div class="w-12 rounded-full">
@@ -33,7 +37,7 @@ import { TaskModalComponent } from '../../../../shared/UI/task-modal/task-modal.
         </div>
       </div>
 
-      <app-task-modal></app-task-modal>
+      <app-task-modal [scope]="'CREATE'" [task]="null"></app-task-modal>
 
 
     </header>
@@ -42,4 +46,9 @@ import { TaskModalComponent } from '../../../../shared/UI/task-modal/task-modal.
 export class HeaderComponent extends IconsDirective {
   name = 'Francesco';
   taskModalComponent = viewChild(TaskModalComponent);
+
+  createTask() {
+    this.taskModalComponent()?.resetForm()
+    this.taskModalComponent()?.openModal()
+  }
 }

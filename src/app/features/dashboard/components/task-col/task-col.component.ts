@@ -7,9 +7,6 @@ import { Component, input } from '@angular/core';
   templateUrl: './task-col.component.html',
 })
 export class TaskColComponent {
-
   title = input('');
   totTasks = input(0);
-
-
 }

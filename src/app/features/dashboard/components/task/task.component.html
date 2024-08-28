@@ -18,4 +18,8 @@
   [text]="'Are you sure you want to delete this task?'"
   (confirm)="deleteTask()"
 ></app-confirm-modal>
-<app-task-modal [task]="selectedTask"></app-task-modal>
+
+<app-task-modal
+  [scope]="'EDIT'"
+  [task]="selectedTask"
+></app-task-modal>

@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class ThemeService {
 
-  constructor() {
-    this.setTheme('business');
-  }
+
+  /***
+    - To change the theme of the application, use the setTheme method
+    - Example: this.themeService.setTheme
+   ***/
 
   setTheme(theme: string) {
     const html = document.querySelector('html');
@@ -15,4 +17,5 @@ export class ThemeService {
       html.setAttribute('data-theme', theme);
     }
   }
+
 }
